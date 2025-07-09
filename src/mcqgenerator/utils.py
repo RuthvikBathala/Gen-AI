@@ -30,19 +30,19 @@ def get_table_data(quiz_str):
     try:
         if not quiz_str:
             raise ValueError("Empty quiz string received.")
-        quiz_dict = json.loads(quiz_str)  # Keep this
+        quiz_dict = json.loads(quiz_str)  
         quiz_table_data = []
 
         for key, value in quiz_dict.items():
-            mcq = value.get("mcq", "")
-            options = value.get("options", {})
+            mcq = value.get("mcq","")
+            options = value.get("options",{})
             quiz_table_data.append({
                 "MCQ": mcq,
-                "Option_A": options.get("a", ""),
-                "Option_B": options.get("b", ""),
-                "Option_C": options.get("c", ""),
-                "Option_D": options.get("d", ""),
-                "Correct": value.get("correct", "")
+                "Option_A": options.get("a",""),
+                "Option_B": options.get("b",""),
+                "Option_C": options.get("c",""),
+                "Option_D": options.get("d",""),
+                "Correct": value.get("correct","")
             })
 
         return quiz_table_data
