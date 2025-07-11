@@ -50,6 +50,12 @@ with st.form("user_input"):
                             df.index=df.index+1
                             st.table(df)
                             st.text_area(label="Review",value=response["review"])
+                            csv_data = df.to_csv(index=False)
+                            st.download_button(
+                                label="Download Quiz as CSV",
+                                data=csv_data,
+                                file_name="quiz.csv"
+                            )
                         else:
                             st.error("Error in the table data")
                 else:
