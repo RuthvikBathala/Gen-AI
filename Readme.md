@@ -101,6 +101,7 @@ The goal is to assist educators, trainers, and students in **rapidly creating as
 5. Model generates 5 biology MCQs in the defined JSON format.
 6. Second model evaluates question complexity.
 7. MCQs and review summary are displayed in the frontend.
+8. User downloads the csv file
 
 ---
 
@@ -112,6 +113,7 @@ Each question includes:
 - Correct answer label
 
 Displayed as a table in Streamlit with an accompanying review paragraph.
+Also provided an option to download as a csv file.
 
 ---
 
