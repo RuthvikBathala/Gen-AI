@@ -13,6 +13,7 @@ with open('response.json','r') as file:
     RESPONSE_JSON=json.load(file)
 
 st.title("MCQs Creator Application with Langchain")
+df=None
 with st.form("user_input"):
     uploaded_file=st.file_uploader("Upload pdf or txt file")  
     no_of_mcqs=st.number_input("No. of MCQs", min_value=3, max_value=50)
@@ -50,14 +51,16 @@ with st.form("user_input"):
                             df.index=df.index+1
                             st.table(df)
                             st.text_area(label="Review",value=response["review"])
-                            csv_data = df.to_csv(index=False)
-                            st.download_button(
-                                label="Download Quiz as CSV",
-                                data=csv_data,
-                                file_name="quiz.csv"
-                            )
+                            
                         else:
                             st.error("Error in the table data")
                 else:
                     st.write(response)
-                      
+
+if df is not None:
+    csv_data = df.to_csv(index=False)
+    st.download_button(
+        label="Download Quiz as CSV",
+        data=csv_data,
+        file_name="quiz.csv"
+    )
